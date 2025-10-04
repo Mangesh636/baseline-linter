@@ -1,71 +1,84 @@
-# baseline-linter README
+# 🔎 Baseline Linter for VSCode
 
-This is the README for your extension "baseline-linter". After writing up a brief description, we recommend including the following sections.
-
-## Features
-
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
-
-## Requirements
-
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
-
-## Extension Settings
-
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+A **Visual Studio Code extension** that helps web developers adopt **modern web features** with confidence.
+It scans your **JavaScript/TypeScript, CSS, and HTML code** for modern APIs and selectors, checks them against [Baseline](https://web.dev/baseline/) and browser compatibility data, and gives **inline feedback, reports, and a searchable dashboard** inside VSCode.
 
 ---
 
-## Following extension guidelines
+## ✨ Features
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+- **Inline Diagnostics**
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+  - Detect modern web features.
+  - Show support warnings/errors directly in your editor.
 
-## Working with Markdown
+- **Baseline Integration**
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+  - Checks if features are part of **Baseline**.
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+- **Browserslist Support**
 
-## For more information
+  - Reads your project’s `.browserslist` config.
+  - Warns if feature isn’t supported in your target browsers.
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+- **Hover Tooltips**
 
-**Enjoy!**
+  - Hover on a feature → see Baseline status, browser versions, and MDN link.
+
+- **Command: Generate Report**
+
+  - Summarize compatibility issues in a VSCode panel.
+
+- **Feature Search**
+
+  - Built-in panel powered by [webstatus.dev](https://webstatus.dev).
+  - Developers can search for any web feature and check support instantly.
+
+- **Project Dashboard**
+  - Analyze the whole codebase.
+  - Show compatibility breakdown (safe, partial, unsafe).
+
+### 🔮 Planned Features
+
+- Quick Fix suggestions (polyfills or fallbacks).
+- Polyfill/package recommendations.
+- GitHub Action or CLI integration.
+- Save results as JSON/Markdown for CI/CD or documentation.
+
+---
+
+## 🛠 Tech Stack
+
+- **VSCode API** → diagnostics, hovers, commands, panels.
+- **Parsers**
+
+  - [`PostCSS`](https://postcss.org/) → CSS selectors & properties.
+  - [`Babel Parser`](https://babel.dev/) → JS/TS AST traversal.
+  - [`htmlparser2`](https://www.npmjs.com/package/htmlparser2) → HTML elements/attributes.
+
+- **Data Sources**
+
+  - [`web-features`](https://www.npmjs.com/package/web-features) → canonical feature definitions.
+  - [`caniuse-lite`](https://www.npmjs.com/package/caniuse-lite) → browser support data.
+  - [`browserslist`](https://github.com/browserslist/browserslist) → target browser configs.
+  - [`webstatus.dev`](https://webstatus.dev) → searchable feature database (dashboard).
+
+---
+
+## 🚀 How It Works
+
+1. Parse your code (CSS, JS/TS, HTML) using AST parsers.
+2. Match features against `web-features` dataset.
+3. Cross-check feature support with `caniuse-lite` + your `browserslist`.
+4. Show inline diagnostics, hover tooltips, and summary reports.
+5. Use the dashboard panel to search for feature support interactively.
+
+---
+
+# 📚 Documentation Powered by DeepWiki
+
+Want to dive deeper into how the extension works, or learn more about a specific feature?
+
+### 👉 Ask DeepWiki – our documentation is fully interactive and powered by DeepWiki.
+
+<div align="center"><a href="https://deepwiki.com/Mangesh636/baseline-linter"><img src="./public/deep-wiki.png" alt="Ask DeepWiki"></a></div>
